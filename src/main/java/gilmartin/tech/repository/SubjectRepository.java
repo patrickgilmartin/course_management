@@ -34,5 +34,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Patrick D. Gilmartin @ patrickdgilmartin.tech
  */
 public interface SubjectRepository extends JpaRepository<Subject, Integer> {
-    List<Subject> findByID(Integer subjectID);
+    List<Subject> findBySubjectId(Integer subjectID);
 }

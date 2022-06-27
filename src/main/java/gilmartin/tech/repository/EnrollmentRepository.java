@@ -34,5 +34,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Patrick D. Gilmartin @ patrickdgilmartin.tech
  */
 public interface EnrollmentRepository extends JpaRepository<Enrollment, Integer> {
-    List<Enrollment> findByID(Integer enrollmentID);
+    List<Enrollment> findByEnrollmentId(Integer enrollmentID);
 }

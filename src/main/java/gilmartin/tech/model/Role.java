@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022, Patrick D Gilmartin
+ * Copyright (c) 2022, Patrick D. Gilmartin @ patrickdgilmartin.tech
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,49 +38,52 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author patri
+ * @author Patrick D. Gilmartin @ patrickdgilmartin.tech
  */
 @Entity
-@Table(name = "instructor")
+@Table(name = "role")
+@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Instructor.findAll", query = "SELECT i FROM Instructor i"),
-    @NamedQuery(name = "Instructor.findByInstructorId", query = "SELECT i FROM Instructor i WHERE i.instructorId = :instructorId"),
-    @NamedQuery(name = "Instructor.findByName", query = "SELECT i FROM Instructor i WHERE i.name = :name")})
-public class Instructor implements Serializable {
+    @NamedQuery(name = "Role.findAll", query = "SELECT r FROM Role r"),
+    @NamedQuery(name = "Role.findByRoleId", query = "SELECT r FROM Role r WHERE r.roleId = :roleId"),
+    @NamedQuery(name = "Role.findByName", query = "SELECT r FROM Role r WHERE r.name = :name")})
+public class Role implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "instructor_id")
-    private Integer instructorId;
+    @Column(name = "role_id")
+    private Integer roleId;
     @Basic(optional = false)
     @Column(name = "name")
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "instructor")
-    private List<Course> courseCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "role")
+    private List<UserRole> userRoleList;
 
-    public Instructor() {
+    public Role() {
     }
 
-    public Instructor(Integer instructorId) {
-        this.instructorId = instructorId;
+    public Role(Integer roleId) {
+        this.roleId = roleId;
     }
 
-    public Instructor(Integer instructorId, String name) {
-        this.instructorId = instructorId;
+    public Role(Integer roleId, String name) {
+        this.roleId = roleId;
         this.name = name;
     }
 
-    public Integer getInstructorId() {
-        return instructorId;
+    public Integer getRoleId() {
+        return roleId;
     }
 
-    public void setInstructorId(Integer instructorId) {
-        this.instructorId = instructorId;
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 
     public String getName() {
@@ -91,29 +94,30 @@ public class Instructor implements Serializable {
         this.name = name;
     }
 
-    public List<Course> getCourseCollection() {
-        return courseCollection;
+    @XmlTransient
+    public List<UserRole> getUserRoleList() {
+        return userRoleList;
     }
 
-    public void setCourseCollection(List<Course> courseCollection) {
-        this.courseCollection = courseCollection;
+    public void setUserRoleList(List<UserRole> userRoleList) {
+        this.userRoleList = userRoleList;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (instructorId != null ? instructorId.hashCode() : 0);
+        hash += (roleId != null ? roleId.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Instructor)) {
+        if (!(object instanceof Role)) {
             return false;
         }
-        Instructor other = (Instructor) object;
-        if ((this.instructorId == null && other.instructorId != null) || (this.instructorId != null && !this.instructorId.equals(other.instructorId))) {
+        Role other = (Role) object;
+        if ((this.roleId == null && other.roleId != null) || (this.roleId != null && !this.roleId.equals(other.roleId))) {
             return false;
         }
         return true;
@@ -121,7 +125,7 @@ public class Instructor implements Serializable {
 
     @Override
     public String toString() {
-        return "gilmartin.tech.model.Instructor[ instructorId=" + instructorId + " ]";
+        return "gilmartin.tech.model.Role[ roleId=" + roleId + " ]";
     }
     
 }

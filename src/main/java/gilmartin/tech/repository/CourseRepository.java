@@ -33,5 +33,5 @@ import gilmartin.tech.model.Course;
  * @author Patrick D. Gilmartin @ patrickdgilmartin.tech
  */
 public interface CourseRepository extends JpaRepository<Course, Integer> {
-  List<Course> findByID(Integer courseID);
+  List<Course> findByCourseId(Integer courseID);
 }

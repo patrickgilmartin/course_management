@@ -34,5 +34,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Patrick D. Gilmartin @ patrickdgilmartin.tech
  */
 public interface RoomRepository extends JpaRepository<Room, Integer> {
-    List<Room> findByID(Integer roomID);
+    List<Room> findByRoomId(Integer roomID);
 }

@@ -26,7 +26,7 @@
 package gilmartin.tech.model;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -69,7 +69,7 @@ public class Student implements Serializable {
     @Column(name = "first_name")
     private String firstName;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "student")
-    private Collection<Enrollment> enrollmentCollection;
+    private List<Enrollment> enrollmentCollection;
 
     public Student() {
     }
@@ -117,11 +117,11 @@ public class Student implements Serializable {
         this.firstName = firstName;
     }
 
-    public Collection<Enrollment> getEnrollmentCollection() {
+    public List<Enrollment> getEnrollmentCollection() {
         return enrollmentCollection;
     }
 
-    public void setEnrollmentCollection(Collection<Enrollment> enrollmentCollection) {
+    public void setEnrollmentCollection(List<Enrollment> enrollmentCollection) {
         this.enrollmentCollection = enrollmentCollection;
     }
 

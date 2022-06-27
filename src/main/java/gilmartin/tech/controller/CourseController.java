@@ -45,7 +45,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * @author Patrick D. Gilmartin @ patrickdgilmartin.tech
  */
 @RestController
-@RequestMapping("/url")
+@RequestMapping("/course")
 public class CourseController {
     
     @GetMapping()

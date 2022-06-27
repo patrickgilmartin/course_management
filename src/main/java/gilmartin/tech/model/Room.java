@@ -26,7 +26,7 @@
 package gilmartin.tech.model;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -66,7 +66,7 @@ public class Room implements Serializable {
     @Column(name = "description")
     private String description;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "room")
-    private Collection<Course> courseCollection;
+    private List<Course> courseCollection;
     @JoinColumn(name = "building", referencedColumnName = "building_id")
     @ManyToOne(optional = false)
     private Building building;
@@ -107,11 +107,11 @@ public class Room implements Serializable {
         this.description = description;
     }
 
-    public Collection<Course> getCourseCollection() {
+    public List<Course> getCourseCollection() {
         return courseCollection;
     }
 
-    public void setCourseCollection(Collection<Course> courseCollection) {
+    public void setCourseCollection(List<Course> courseCollection) {
         this.courseCollection = courseCollection;
     }
 

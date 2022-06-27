@@ -26,8 +26,8 @@
 package gilmartin.tech.model;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -43,6 +43,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -56,6 +57,9 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Course.findByStartTime", query = "SELECT c FROM Course c WHERE c.startTime = :startTime"),
     @NamedQuery(name = "Course.findByEndTime", query = "SELECT c FROM Course c WHERE c.endTime = :endTime")})
 public class Course implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
+    private List<DaysOfWeek> daysOfWeekList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -81,7 +85,7 @@ public class Course implements Serializable {
     @ManyToOne(optional = false)
     private Subject subject;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
-    private Collection<Enrollment> enrollmentCollection;
+    private List<Enrollment> enrollmentCollection;
 
     public Course() {
     }
@@ -144,11 +148,11 @@ public class Course implements Serializable {
         this.subject = subject;
     }
 
-    public Collection<Enrollment> getEnrollmentCollection() {
+    public List<Enrollment> getEnrollmentCollection() {
         return enrollmentCollection;
     }
 
-    public void setEnrollmentCollection(Collection<Enrollment> enrollmentCollection) {
+    public void setEnrollmentCollection(List<Enrollment> enrollmentCollection) {
         this.enrollmentCollection = enrollmentCollection;
     }
 
@@ -175,6 +179,15 @@ public class Course implements Serializable {
     @Override
     public String toString() {
         return "gilmartin.tech.model.Course[ courseId=" + courseId + " ]";
+    }
+
+    @XmlTransient
+    public List<DaysOfWeek> getDaysOfWeekList() {
+        return daysOfWeekList;
+    }
+
+    public void setDaysOfWeekList(List<DaysOfWeek> daysOfWeekList) {
+        this.daysOfWeekList = daysOfWeekList;
     }
     
 }

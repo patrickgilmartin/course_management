@@ -9,6 +9,10 @@
     <class>gilmartin.tech.model.Instructor</class>
     <class>gilmartin.tech.model.Building</class>
     <class>gilmartin.tech.model.Student</class>
+    <class>gilmartin.tech.model.DaysOfWeek</class>
+    <class>gilmartin.tech.model.UserRole</class>
+    <class>gilmartin.tech.model.Role</class>
+    <class>gilmartin.tech.model.User</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/school?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

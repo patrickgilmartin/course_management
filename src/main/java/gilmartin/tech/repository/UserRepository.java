@@ -25,14 +25,13 @@
  */
 package gilmartin.tech.repository;
 
-import gilmartin.tech.model.Instructor;
-import java.util.List;
+import gilmartin.tech.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author Patrick D. Gilmartin @ patrickdgilmartin.tech
  */
-public interface InstructorRepository extends JpaRepository<Instructor, Integer> {
-    List<Instructor> findByInstructorId(Integer instructorID);
+public interface UserRepository extends JpaRepository<User, Integer> {
+    public User getUserByUsername(String username);
 }

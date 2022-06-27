@@ -23,16 +23,26 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package gilmartin.tech.repository;
+package gilmartin.tech;
 
-import gilmartin.tech.model.Instructor;
-import java.util.List;
-import org.springframework.data.jpa.repository.JpaRepository;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import gilmartin.tech.controller.CourseController;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 /**
  *
  * @author Patrick D. Gilmartin @ patrickdgilmartin.tech
  */
-public interface InstructorRepository extends JpaRepository<Instructor, Integer> {
-    List<Instructor> findByInstructorId(Integer instructorID);
+@SpringBootTest
+public class SmokeTest {
+    @Autowired
+    private CourseController controller;
+    
+    @Test
+    public void contextLoads() throws Exception {
+        assertThat(controller).isNotNull();
+    }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022, Patrick D Gilmartin
+ * Copyright (c) 2022, Patrick D. Gilmartin @ patrickdgilmartin.tech
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,94 +26,90 @@
 package gilmartin.tech.model;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author patri
+ * @author Patrick D. Gilmartin @ patrickdgilmartin.tech
  */
 @Entity
-@Table(name = "instructor")
+@Table(name = "user_role")
+@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Instructor.findAll", query = "SELECT i FROM Instructor i"),
-    @NamedQuery(name = "Instructor.findByInstructorId", query = "SELECT i FROM Instructor i WHERE i.instructorId = :instructorId"),
-    @NamedQuery(name = "Instructor.findByName", query = "SELECT i FROM Instructor i WHERE i.name = :name")})
-public class Instructor implements Serializable {
+    @NamedQuery(name = "UserRole.findAll", query = "SELECT u FROM UserRole u"),
+    @NamedQuery(name = "UserRole.findByUserRoleId", query = "SELECT u FROM UserRole u WHERE u.userRoleId = :userRoleId")})
+public class UserRole implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "instructor_id")
-    private Integer instructorId;
-    @Basic(optional = false)
-    @Column(name = "name")
-    private String name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "instructor")
-    private List<Course> courseCollection;
+    @Column(name = "user_role_id")
+    private Integer userRoleId;
+    @JoinColumn(name = "role", referencedColumnName = "role_id")
+    @ManyToOne(optional = false)
+    private Role role;
+    @JoinColumn(name = "user", referencedColumnName = "user_id")
+    @ManyToOne(optional = false)
+    private User user;
 
-    public Instructor() {
+    public UserRole() {
     }
 
-    public Instructor(Integer instructorId) {
-        this.instructorId = instructorId;
+    public UserRole(Integer userRoleId) {
+        this.userRoleId = userRoleId;
     }
 
-    public Instructor(Integer instructorId, String name) {
-        this.instructorId = instructorId;
-        this.name = name;
+    public Integer getUserRoleId() {
+        return userRoleId;
     }
 
-    public Integer getInstructorId() {
-        return instructorId;
+    public void setUserRoleId(Integer userRoleId) {
+        this.userRoleId = userRoleId;
     }
 
-    public void setInstructorId(Integer instructorId) {
-        this.instructorId = instructorId;
+    public Role getRole() {
+        return role;
     }
 
-    public String getName() {
-        return name;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public User getUser() {
+        return user;
     }
 
-    public List<Course> getCourseCollection() {
-        return courseCollection;
-    }
-
-    public void setCourseCollection(List<Course> courseCollection) {
-        this.courseCollection = courseCollection;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (instructorId != null ? instructorId.hashCode() : 0);
+        hash += (userRoleId != null ? userRoleId.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Instructor)) {
+        if (!(object instanceof UserRole)) {
             return false;
         }
-        Instructor other = (Instructor) object;
-        if ((this.instructorId == null && other.instructorId != null) || (this.instructorId != null && !this.instructorId.equals(other.instructorId))) {
+        UserRole other = (UserRole) object;
+        if ((this.userRoleId == null && other.userRoleId != null) || (this.userRoleId != null && !this.userRoleId.equals(other.userRoleId))) {
             return false;
         }
         return true;
@@ -121,7 +117,7 @@ public class Instructor implements Serializable {
 
     @Override
     public String toString() {
-        return "gilmartin.tech.model.Instructor[ instructorId=" + instructorId + " ]";
+        return "gilmartin.tech.model.UserRole[ userRoleId=" + userRoleId + " ]";
     }
     
 }

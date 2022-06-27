@@ -23,16 +23,33 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package gilmartin.tech.repository;
+package gilmartin.tech.security;
 
-import gilmartin.tech.model.Instructor;
-import java.util.List;
-import org.springframework.data.jpa.repository.JpaRepository;
+import gilmartin.tech.model.User;
+import gilmartin.tech.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 /**
  *
  * @author Patrick D. Gilmartin @ patrickdgilmartin.tech
  */
-public interface InstructorRepository extends JpaRepository<Instructor, Integer> {
-    List<Instructor> findByInstructorId(Integer instructorID);
+public class UserDetailsServiceImpl implements UserDetailsService {
+
+    @Autowired
+    private UserRepository UserRepository;
+    
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = UserRepository.getUserByUsername(username);
+        
+        if(user == null) {
+            throw new UsernameNotFoundException("User could not be found.");
+        }
+        
+        return new SchoolUserDetails(user);
+    }
+    
 }

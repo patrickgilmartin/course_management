@@ -34,6 +34,6 @@ import gilmartin.tech.model.Building;
  * @author Patrick D. Gilmartin @ patrickdgilmartin.tech
  */
 public interface BuildingRepository extends JpaRepository<Building, Integer> {
-    List<Building> findByID(Integer buildingID);
+    List<Building> findByBuildingId(Integer buildingID);
     List<Building> findByName(String name);
 }
