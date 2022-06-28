@@ -27,7 +27,6 @@ package gilmartin.tech.security;
 
 import gilmartin.tech.model.Role;
 import gilmartin.tech.model.User;
-import gilmartin.tech.model.UserRole;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
