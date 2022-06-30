@@ -20,7 +20,7 @@
         <frontend-src-dir>${project.basedir}/src/main/app</frontend-src-dir>
         <node.version>v16.15.1</node.version>
         <npm.version>8.13.1</npm.version>
-        <frontend-maven-plugin.version>1.9.1</frontend-maven-plugin.version>
+        <frontend-maven-plugin.version>1.12.1</frontend-maven-plugin.version>
     </properties>
 
     <dependencies>
@@ -145,7 +145,6 @@
                             <arguments>install</arguments>
                         </configuration>
                     </execution>
-
                     <execution>
                         <id>npm run build</id>
                         <goals>
@@ -174,6 +173,21 @@
                                 <resource>
                                     <directory>${frontend-src-dir}/build</directory>
                                     <filtering>false</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/classes/static/</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${frontend-src-dir}/build</directory>
                                 </resource>
                             </resources>
                         </configuration>
