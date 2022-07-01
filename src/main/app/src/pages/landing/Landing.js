@@ -1,9 +1,9 @@
+import Login from "../../components/auth/login";
+
 function Landing() {
     return (
         <>
-            <div>
-                <h1>Hello</h1>
-            </div>
+            <Login />
         </>
     );
 }
