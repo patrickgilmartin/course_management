@@ -1,122 +1,38 @@
-/*
-$darkcyan: #009e73 !default;
-$eveblue: #30b2e6 !default;
-$orange: #f44336 !default;
-$caldariblue: #3c5f73 !default;
-$minmatarred: #5a3737 !default;
-$amarryellow: #bba183 !default;
-$gallenteblue: #576866 !default;
-$caldariblack: #191919 !default;
+$orchid: #9b1889;
+$pumpkin: #ff7900;
+$plum: #693065;
+$citron: #bed600;
+$sky: #5eb6e4;
+$goldenrod: #fecb00;
+$crimson: #770000;
 
 $custom-colors: (
-    "darkcyan": $darkcyan,
-    "eveblue": $eveblue,
-    "orange": $orange,
-    "caldariblue": $caldariblue,
-    "minmatarred": $minmatarred,
-    "amarryellow": $amarryellow,
-    "gallenteblue": $gallenteblue,
-    "caldariblack": $caldariblack
+    "orchid": $orchid,
+    "pumpkin":$pumpkin,
+    "plum": $plum,
+    "citron": $citron,
+    "sky": $sky,
+    "goldenrod": $goldenrod,
+    "crimson": $crimson
 );
 
-$primary: $eveblue  !default;
-$secondary: $caldariblack  !default;
-$danger: $orange  !default;
+$primary: $plum  !default;
+$secondary: $pumpkin  !default;
+$success: $citron  !default;
+$info: $sky  !default;
+$warning: $goldenrod  !default;
+$danger: $crimson  !default;
 
-$success: $green  !default;
-$info: $cyan  !default;
-$warning: $yellow  !default;
-$danger: $red  !default;
-$light: $gray-100  !default;
-$dark: $gray-900  !default;
+$body-bg: #fff;
+$body-color: #000;
 
-$body-bg: #29353a;
-$body-color: #fff;
-
+/*
 @font-face {
     font-family: Shentox;
     src: url("../../public/assets/fonts/Shentox.ttf");
 }
-
-$font-family-base: 'Shentox';
 */
-
-.pagination-bar {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.pagination-container {
-    display: flex;
-    list-style-type: none;
-
-    .pagination-item {
-        padding: 0 12px;
-        height: 32px;
-        text-align: center;
-        margin: auto 4px;
-        color: rgba(255, 255, 255, 0.87);
-        display: flex;
-        box-sizing: border-box;
-        align-items: center;
-        letter-spacing: 0.01071em;
-        border-radius: 16px;
-        line-height: 1.43;
-        font-size: 13px;
-        min-width: 32px;
-
-        &.dots:hover {
-            background-color: transparent;
-            cursor: default;
-        }
-
-        &:hover {
-            background-color: rgba(255, 255, 255, 0.04);
-            cursor: pointer;
-        }
-
-        &.selected {
-            background-color: rgba(255, 255, 255, 0.08);
-        }
-
-        .arrow {
-            &::before {
-                position: relative;
-                /* top: 3pt; Uncomment this to lower the icons as requested in comments*/
-                content: '';
-                /* By using an em scale, the arrows will size with the font */
-                display: inline-block;
-                width: 0.4em;
-                height: 0.4em;
-                border-right: 0.12em solid rgba(255, 255, 255, 0.87);
-                border-top: 0.12em solid rgba(255, 255, 255, 0.87);
-            }
-
-            &.left {
-                transform: rotate(-135deg) translate(-50%);
-            }
-
-            &.right {
-                transform: rotate(45deg);
-            }
-        }
-
-        &.disabled {
-            pointer-events: none;
-
-            .arrow::before {
-                border-right: 0.12em solid rgba(255, 255, 255, 0.43);
-                border-top: 0.12em solid rgba(255, 255, 255, 0.43);
-            }
-
-            &:hover {
-                background-color: transparent;
-                cursor: default;
-            }
-        }
-    }
-}
+$font-family-base: Arial, Helvetica, sans-serif;
 
 #side {
     -webkit-box-orient: vertical;
@@ -199,4 +115,11 @@ li {
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAxklEQVQ4jcWTuwrCQBBFz2x8BAzYiHbJL1j5dVYWfpqdIlhq4ydIRjBL3LEREY0xouCFaeZxOXdhxcz4Ru6r618Y1ClqtGVmTwW0vfcbIK6a39dTBBGJgIGq9lR1LSK9OoBXbxAXRdFV1STP81WdSevVIITgyrJsAajqUkTGZnZqSnAz8d53kiSZAv1rvOYGzrmQpukc2AEHMzs3juCcC1mWzYAFsK3CB5CKXgQMgQmwB7bAsY60Sm1gBMSfHj6SvJX8/TdeAAFQZ8Uxp1UMAAAAAElFTkSuQmCC) no-repeat;
     width: 16px;
     height: 16px;
+}
+
+.nav-link {
+    font-size: .8em;
+    font-weight: bold;
+    letter-spacing: 0.03em;
+    padding: 0 0 !important;
 }

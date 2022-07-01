@@ -1,14 +1,13 @@
 import React from "react";
 
-function Footer() {
-    return (
-        <footer className="text-muted py-2 bg-secondary fixed-bottom mt-5">
-            <div className="container">
+const Footer = () => (
+    <footer className="text-muted py-2 bg-primary fixed-bottom mt-5">
+        <div className="container-fluid d-flex align-items-end flex-column">
+            <p className="mb-1 text-secondary">CMS is maintained by Patrick Gilmartin</p>
+            <p className="mb-1 text-secondary">Copyright © 2022</p>
+        </div>
+    </footer>
+);
 
-                <p className="mb-1">Course Management System is © 2022 Patrick Gilmartin</p>
-            </div>
-        </footer>
-    );
-}
 
 export default Footer;
